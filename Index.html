@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa sobre el sistema de visión en League of Legends: Wild Rift con consejos estratégicos y cuestionario interactivo">
     <title>¡Domina la Visión en Wild Rift: Guía Pastel!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --rosa-fuerte: #e91e63;
+            --rosa-claro: #f06292;
+            --morado: #9c27b0;
+            --morado-claro: #ba68c8;
+            --morado-oscuro: #673ab7;
+            --gris-oscuro: #424242;
+            --gris-texto: #546e7a;
+        }
+
         body {
             font-family: 'Nunito', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f8bbd0, #bbdefb); /* Rosa y azul pastel */
-            color: #424242; /* Gris oscuro */
+            background: linear-gradient(135deg, #f8bbd0, #bbdefb);
+            color: var(--gris-oscuro);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
@@ -22,7 +36,7 @@
 
         header {
             background-color: rgba(255, 255, 255, 0.8);
-            color: #e91e63; /* Rosa fuerte */
+            color: var(--rosa-fuerte);
             padding: 40px 0;
             text-align: center;
             width: 80%;
@@ -38,7 +52,7 @@
         }
 
         header p {
-            color: #f06292; /* Rosa más claro */
+            color: var(--rosa-claro);
             font-style: italic;
         }
 
@@ -48,6 +62,7 @@
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            width: 80%;
         }
 
         nav ul {
@@ -55,23 +70,27 @@
             padding: 0;
             margin: 0;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 25px;
+            margin: 0 15px;
         }
 
         nav a {
-            color: #9c27b0; /* Morado */
+            color: var(--morado);
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            padding: 5px 0;
         }
 
         nav a:hover {
-            color: #ba68c8; /* Morado más claro */
-            transform: scale(1.1);
+            color: var(--morado-claro);
+            transform: scale(1.1) translateY(-2px);
         }
 
         main {
@@ -81,6 +100,7 @@
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
         section {
@@ -88,38 +108,50 @@
             margin-bottom: 30px;
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 12px;
-            border: 1px solid rgba(156, 39, 176, 0.1); /* Borde morado */
+            border: 1px solid rgba(156, 39, 176, 0.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
         h2, h3 {
-            color: #673ab7; /* Morado más oscuro */
+            color: var(--morado-oscuro);
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
         }
 
         .vision-type, .ward-spot, #quiz-container .question {
             margin-bottom: 25px;
             padding: 25px;
-            border: 1px dashed rgba(156, 39, 176, 0.2);
+            border-left: 5px solid var(--morado);
             border-radius: 10px;
-            background-color: rgba(186, 104, 200, 0.3); /* Morado claro */
+            background-color: rgba(186, 104, 200, 0.3);
         }
 
-        .vision-type h3::before, .ward-spot h3::before, #quiz h2::before {
-            content: "\f06e"; /* Icono de ojo */
+        .vision-type h3::before, .ward-spot h3::before, #vision-por-rol h3::before {
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             margin-right: 15px;
+        }
+
+        .vision-type h3::before {
+            content: "\f06e";
             color: #ffab91;
         }
 
+        .ward-spot h3::before {
+            content: "\f3c5";
+            color: #81d4fa;
+        }
+
         #quiz h2::before {
-            content: "\f0eb"; /* Icono de bombilla */
+            content: "\f0eb";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 15px;
+            color: #ffcc80;
         }
 
         .vision-type h3, .ward-spot h3 {
             margin-top: 0;
-            color: #ba68c8;
+            color: var(--morado-claro);
         }
 
         #quiz {
@@ -131,16 +163,16 @@
         }
 
         .question h3 {
-            color: #7e57c2; /* Morado más claro */
+            color: #7e57c2;
             margin-top: 0;
         }
 
         .options label {
             display: block;
             margin-bottom: 15px;
-            color: #546e7a;
+            color: var(--gris-texto);
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
             padding: 18px;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.7);
@@ -164,14 +196,14 @@
             font-size: 1.2em;
             border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         #submit-quiz:hover {
             background-color: #ffb74d;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         #results {
@@ -180,34 +212,33 @@
             color: #aed581;
             font-size: 1.4em;
             text-align: center;
+            min-height: 30px;
         }
 
         footer {
             background-color: rgba(255, 255, 255, 0.8);
-            color: #546e7a;
+            color: var(--gris-texto);
             text-align: center;
             padding: 25px 0;
             width: 80%;
-            margin-top: 40px;
+            margin-top: auto;
             border-radius: 15px;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.08);
         }
 
-        /* Estilos interactivos */
+        /* Estilos de respuestas */
         .correct-answer {
-            background-color: rgba(129, 212, 250, 0.5) !important; /* Azul pastel claro */
+            background-color: rgba(129, 212, 250, 0.5) !important;
             color: #263238 !important;
             font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .incorrect-answer {
-            background-color: rgba(255, 171, 145, 0.5) !important; /* Naranja pastel muy claro */
+            background-color: rgba(255, 171, 145, 0.5) !important;
             color: #263238 !important;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilos para la sección de roles */
+        /* Sección de roles */
         #vision-por-rol ul {
             list-style: none;
             padding-left: 0;
@@ -222,15 +253,12 @@
         }
 
         #vision-por-rol h3 {
-            color: #f06292;
+            color: var(--rosa-claro);
             margin-bottom: 10px;
         }
 
         #vision-por-rol h3::before {
-            content: "\f1ae"; /* Icono de user-secret */
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            margin-right: 15px;
+            content: "\f007";
             color: #9575cd;
         }
 
@@ -240,40 +268,49 @@
             margin-top: 10px;
         }
 
-        /* Eliminamos la rotación de las secciones */
-        section {
-            transform: none;
+        /* Responsividad */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
+            
+            header, nav, main, footer {
+                width: 95%;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
         }
 
-        .vision-type, .ward-spot {
-            border-left: 5px solid #9c27b0; /* Borde morado */
-        }
-
-        /* Animaciones */
-        nav a {
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        nav a:hover {
-            transform: scale(1.1) translateY(-2px);
-        }
-
-        #submit-quiz {
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        #submit-quiz:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        @media (max-width: 480px) {
+            .options label {
+                padding: 12px;
+            }
+            
+            #submit-quiz {
+                padding: 15px 25px;
+                font-size: 1em;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>¡Domina la Visión en Wild Rift: Guía Pastel!</h1>
-        <p style="color:#f06292;">Descubre el arte de ver en el mundo de Wild Rift.</p>
+        <p>Descubre el arte de ver en el mundo de Wild Rift.</p>
     </header>
 
     <nav>
@@ -289,39 +326,39 @@
     </nav>
 
     <main>
-        <section id="introduccion">
+        <article id="introduccion">
             <h2>La Importancia de Ver en las Sombras</h2>
             <p>En la Grieta Salvaje, la información es poder. La visión te permite anticipar emboscadas, rastrear al enemigo y asegurar objetivos cruciales. Domina el arte de iluminar la oscuridad y obtén una ventaja estratégica sobre tus oponentes.</p>
-        </section>
+        </article>
 
         <section id="tipos-de-vision">
             <h2>Conoce tus Herramientas de Iluminación</h2>
-            <div class="vision-type">
+            <article class="vision-type">
                 <h3>Guardián de Visión (El Ojo que Persiste)</h3>
                 <p>Tu fuente confiable de información en un área determinada durante un tiempo limitado. Colócalo sabiamente para tener una vigilancia constante.</p>
-            </div>
-            <div class="vision-type">
+            </article>
+            <article class="vision-type">
                 <h3>Guardián Centinela (El Revelador de Sombras)</h3>
                 <p>Aunque de menor alcance, revela lo que se oculta: guardianes enemigos y unidades invisibles. Úsalo para limpiar el camino antes de una jugada.</p>
-            </div>
-            <div class="vision-type">
+            </article>
+            <article class="vision-type">
                 <h3>Planta de Exploración (El Vistazo Rápido)</h3>
                 <p>Una ráfaga de visión en una dirección. Utilízala para explorar rápidamente zonas peligrosas sin exponerte.</p>
-            </div>
+            </article>
         </section>
 
         <section id="colocacion-de-guardianes">
             <h2>¡Maestro de la Ubicación Estratégica!</h2>
-            <div class="ward-spot">
+            <article class="ward-spot">
                 <h3>Puntos de Control en la Jungla Enemiga</h3>
                 <p>Guardianes bien ubicados aquí te alertarán sobre los movimientos del junglero rival, permitiéndote predecir ganks y coordinar contraataques.</p>
                 <p><strong>Zonas Clave:</strong> Entradas a campamentos, cruces importantes.</p>
-            </div>
-            <div class="ward-spot">
+            </article>
+            <article class="ward-spot">
                 <h3>Protección en los Carriles: Centinelas Defensivos</h3>
                 <p>Un guardián a tiempo puede salvarte de una emboscada. Colócalos en los flancos y en el río para tener una alerta temprana.</p>
                 <p><strong>Lugares Seguros:</strong> Arbustos laterales, río.</p>
-            </div>
+            </article>
         </section>
 
         <section id="negacion-de-vision">
@@ -364,7 +401,7 @@
                     <ul>
                         <li><strong>Temprano:</strong> Control de visión en línea, presión ofensiva y defensa.</li>
                         <li><strong>Medio:</strong> Rotación para visión en objetivos y rutas enemigas.</li>
-                        <li><strong>Tardío:</strong> Control de visión en objetivos clave , habilidades/objetos de visión en peleas.</li>
+                        <li><strong>Tardío:</strong> Control de visión en objetivos clave, habilidades/objetos de visión en peleas.</li>
                     </ul>
                 </li>
             </ul>
@@ -372,10 +409,9 @@
 
         <section id="quiz">
             <h2>¡Pon a Prueba tu Paleta de Visión!</h2>
-            <div id="quiz-container">
-            </div>
-            <button id="submit-quiz">¡Evaluar mi Visión!</button>
-            <div id="results"></div>
+            <div id="quiz-container"></div>
+            <button id="submit-quiz" aria-label="Evaluar respuestas del cuestionario">¡Evaluar mi Visión!</button>
+            <div id="results" role="status"></div>
         </section>
     </main>
 
@@ -443,21 +479,29 @@
 
             function generateQuiz() {
                 quizData.forEach((questionData, index) => {
-                    const questionDiv = document.createElement('div');
+                    const questionDiv = document.createElement('article');
                     questionDiv.classList.add('question');
                     questionDiv.innerHTML = `<h3>Pregunta ${index + 1}: ${questionData.question}</h3>`;
+                    
                     const optionsDiv = document.createElement('div');
                     optionsDiv.classList.add('options');
-                    questionData.options.forEach((option, optionIndex) => {
+                    
+                    questionData.options.forEach((option) => {
+                        const optionId = `question-${index}-${option.replace(/\s+/g, '-').toLowerCase()}`;
                         const label = document.createElement('label');
                         const input = document.createElement('input');
+                        
                         input.type = 'radio';
                         input.name = `question-${index}`;
                         input.value = option;
+                        input.id = optionId;
+                        
+                        label.htmlFor = optionId;
                         label.appendChild(input);
                         label.appendChild(document.createTextNode(` ${option}`));
                         optionsDiv.appendChild(label);
                     });
+                    
                     questionDiv.appendChild(optionsDiv);
                     quizContainer.appendChild(questionDiv);
                 });
@@ -466,34 +510,4 @@
             function showResults() {
                 const answerContainers = quizContainer.querySelectorAll('.question');
                 let score = 0;
-                quizData.forEach((questionData, index) => {
-                    const answerContainer = answerContainers[index];
-                    const selectedOption = answerContainer.querySelector(`input[name="question-${index}"]:checked`);
-                    const labels = answerContainer.querySelectorAll('.options label');
-
-                    labels.forEach(label => {
-                        label.classList.remove('correct-answer', 'incorrect-answer');
-                    });
-
-                    if (selectedOption) {
-                        if (selectedOption.value === questionData.correctAnswer) {
-                            score++;
-                            const correctLabel = Array.from(labels).find(label => label.querySelector('input').value === questionData.correctAnswer);
-                            correctLabel.classList.add('correct-answer');
-                        } else {
-                            const incorrectLabel = Array.from(labels).find(label => label.querySelector('input:checked'));
-                            incorrectLabel.classList.add('incorrect-answer');
-                            const correctLabel = Array.from(labels).find(label => label.querySelector('input').value === questionData.correctAnswer);
-                            correctLabel.classList.add('correct-answer');
-                        }
-                    }
-                });
-                resultsContainer.textContent = `¡Has revelado ${score} de ${quizData.length} respuestas correctas!`;
-            }
-
-            generateQuiz();
-            submitButton.addEventListener('click', showResults);
-        });
-    </script>
-</body>
-</html>
+                let
